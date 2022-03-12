@@ -1,0 +1,154 @@
+@font-face {
+    font-family: 'CBNUJIKJI';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/CBNUJIKJI.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hahmlet-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hahmlet-SemiBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-SemiBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    height: 100%;
+    padding: 100px;
+    font-family: 'Hahmlet-Regular';
+    font-size: 15px;
+    color: darkslategray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+input, select {
+    border-radius: 5px;
+    border: 1px solid grey;
+    font-family: 'Hahmlet-Regular';
+    font-size: 17px;
+    color: darkslategray;
+    transition: 0;
+}
+
+.container {
+    border: 1px solid darkgrey;
+    border-radius: 15px;
+    box-shadow: 1px 1px darkgrey;
+    width: 400px;
+    height: 750px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 30px 38px;
+    opacity: 0.9;
+}
+
+/* '회원가입' */
+.container > label {
+    font-family: 'CBNUJIKJI';
+    font-size: 30px;
+    padding: 10px 0;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+
+.join-form > div {
+    display: flex;
+    flex-direction: column;
+    margin: 8px 5px;
+}
+
+.join-form > div > span {
+    padding-left: 4px;
+    margin: 3px 0;
+}
+
+.join-form > div > input {
+    width: 370px;
+    height: 45px;
+    padding: 0 10px;    
+    margin: 4px 0;
+}
+
+.join-form-phone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 390px;
+    height: 45px;
+}
+
+.join-form-phone > input {
+    height: 35px;
+    font-family: 'Hahmlet-Regular';
+    font-size: 17px;
+    padding: 0 10px;   
+    text-align: center;
+}
+
+.join-form-phone > label {
+    font-size: 21px;
+}
+
+#phone1 {
+    width: 55px;
+    font-size: 15px;;
+}
+
+#phone2, #phone3 {
+    width: 75px;
+}
+
+.join-form-city {
+    height: 43px;
+    font-family: 'Hahmlet-Regular';
+    font-size: 17px;
+    padding: 0 10px;
+    margin: 3px 0;
+}
+
+.join-form-gender {
+    font-size: 16px;
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.join-form-gender > span {
+    margin: 0 10px 5px;
+}
+
+.join-form-gender > span> input {
+    margin: 0 8px;
+}
+
+#submit-btn {
+    width: 400px;
+    height: 70px;
+    margin: 15px 0;
+    font-size: 20px;
+    font-family: 'Hahmlet-SemiBold';
+    border-style: hidden;
+    border-radius: 8px;
+    background-color: orange;
+    opacity: 0.8;
+}
+
+#submit-btn:disabled {
+    background-color: lightgray;
+    color: darkgrey;
+}
+

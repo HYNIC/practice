@@ -19,7 +19,7 @@ function activateBtn() {
         city = document.querySelector(".join-form-city"),
         gender = document.querySelector("input[name='gender']:checked");
     
-    if (!(email.value && name.value && pw.value && re_pw.value && phone1.value && phone2.value && phone3.value && (city.value.length != 0) && gender.value)) {
+    if (!(email.value && name.value && pw.value && re_pw.value && (phone1.value.length == 3) && (phone2.value.length == 4) && (phone3.value.length == 4) && (city.value.length != 0) && gender.value)) {
         joinBtn.disabled = true;
     } else {
         joinBtn.disabled = false;

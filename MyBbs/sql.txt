@@ -1,0 +1,63 @@
+create table mybbs_user_tbl (
+    id varchar2(100) primary key,
+    pw varchar2(100),
+    name varchar2(100)
+);
+
+desc mybbs_user_tbl;
+
+insert into mybbs_user_tbl values('gana', '1111','김가나');
+insert into mybbs_user_tbl values('dara', '2222','이다라');
+insert into mybbs_user_tbl values('maba', '3333','박마바');
+insert into mybbs_user_tbl values('sa-a', '4444','송사아');
+insert into mybbs_user_tbl values('jacha', '5555','유자차');
+
+commit;
+
+select * from mybbs_user_tbl;
+
+
+create table mybbs_tbl (
+    num number primary key,
+    title varchar2(100),
+    writer varchar2(100),
+    content varchar2(1000),
+    regdate date,
+    replycnt number
+);
+
+desc mybbs_tbl;
+select * from mybbs_tbl order by num desc;
+
+select count(*) from mybbs_tbl;
+
+select num, title, writer, content, regdate, replycnt from (select rownum rnum, a.* from (select * from mybbs_tbl order by num desc) a) where rnum between 11 and 20;
+
+insert into mybbs_tbl values(mybbs_seq.nextval, 'test01', '김가나', 'test중', sysdate, 0);
+insert into mybbs_tbl values(mybbs_seq.nextval, 'test02', '이다라', 'test중', sysdate, 0);
+insert into mybbs_tbl values(mybbs_seq.nextval, 'test03', '박마바', 'test중', sysdate, 0);
+insert into mybbs_tbl values(mybbs_seq.nextval, 'test04', '송사아', 'test중', sysdate, 0);
+insert into mybbs_tbl values(mybbs_seq.nextval, 'test05', '유자차', 'test중', sysdate, 0);
+
+commit;
+create sequence mybbs_seq;
+
+create table reply_tbl (
+    num number,
+    bbs_num number,
+    comments varchar2(100),
+    writer varchar2(100),
+    constraint reply_pk primary key(num),
+    constraint reply_fk foreign key(bbs_num)
+    references mybbs_tbl(num)
+    on delete cascade
+);
+
+create sequence reply_seq;
+
+desc reply_tbl;
+drop table reply_tbl;
+
+select * from reply_tbl;
+
+select * from mybbs_tbl;

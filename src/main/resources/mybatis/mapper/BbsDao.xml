@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.study.demo.dao.IBbsDao">
+	<select id="listDao" resultType="com.study.demo.dto.BbsDto">
+		select num, title, writer, content, regdate, replycnt from 
+			(select rownum rnum, a.* from 
+				(select * from mybbs_tbl order by num desc) a) 
+		where rnum between ((#{param1}-1)*10)+1 and (#{param1}*10)
+	</select>
+	
+	<select id="countRows" resultType="Integer">
+		select count(*) from mybbs_tbl
+	</select>
+	
+	<select id="viewDao" resultType="com.study.demo.dto.BbsDto">
+		select * from mybbs_tbl where num = #{param1} 
+	</select>
+	
+	<insert id="writeDao">
+		insert into mybbs_tbl values(mybbs_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, 0)
+	</insert>
+	
+	<update id="updateDao">
+		update mybbs_tbl set title = #{param1}, content = #{param2} where num = #{param3}
+	</update>
+	
+	<update id="replyCountDao">
+		update mybbs_tbl set replycnt = replycnt + 1 where num = #{param1}
+	</update>
+	
+	<delete id="deleteDao">
+		delete from mybbs_tbl where num = #{param1} 
+	</delete>
+	
+	<select id="searchDao" resultType="com.study.demo.dto.BbsDto">
+		select * from mybbs_tbl where ${param1} like '%'||#{param2}||'%' order by num desc
+	</select>
+	
+	<select id="countSearch" resultType="Integer">
+		select count(*) from (select * from mybbs_tbl where ${param1} like '%'||#{param2}||'%')
+	</select>
+</mapper>

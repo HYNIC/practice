@@ -12,10 +12,10 @@
     <div class="container">
         <label>회원가입</label>
 
-        <form class="join-form" oninput="activateBtn()">
+        <form class="join-form">
             <div class="join-form-email">
                 <span>e-mail</span>
-                <input type="text" name="email" id="email" placeholder="이메일을 입력해 주세요" oninput="checkEmail()">
+                <input type="text" name="email" id="email" placeholder="이메일을 입력해 주세요">
                 <p id="err-email"></p>
             </div>
             
@@ -26,12 +26,12 @@
             
             <div>
                 <span>비밀번호</span>
-                <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력해 주세요" minlength="4" maxlength="20" oninput="checkPw()">
+                <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력해 주세요" minlength="4" maxlength="20">
             </div>
 
             <div>
                 <span>비밀번호 확인</span>
-                <input type="password" name="pw" id="pw2" placeholder="비밀번호를 다시 입력해 주세요" minlength="4" maxlength="20" oninput="checkPw()">
+                <input type="password" name="pw" id="pw2" placeholder="비밀번호를 다시 입력해 주세요" minlength="4" maxlength="20">
                 <p id="err-pw"></p>
             </div>
 
@@ -39,11 +39,11 @@
                 <span>연락처</span>
 
                 <div class="join-form-phone">
-                    <input type="text" name="phone1" id="phone1" maxlength="3" onkeyup="moveFocus(this, phone2, 3)">
+                    <input type="text" name="phone" class="phone" maxlength="3">
                     <label>-</label>
-                    <input type="text" name="phone2" id="phone2" maxlength="4" onkeyup="moveFocus(this, phone3, 4)">
+                    <input type="text" name="phone" class="phone" maxlength="4">
                     <label>-</label>
-                    <input type="text" name="phone3" id="phone3" maxlength="4" onkeyup="moveFocus(this, city, 4)">
+                    <input type="text" name="phone" class="phone" maxlength="4">
                 </div>
             </div>
 
@@ -74,7 +74,7 @@
 
             <hr>
 
-            <input type="submit" value="가입하기" id="submit-btn" disabled onclick="confirmInput()">
+            <input type="submit" value="가입하기" id="submit-btn" disabled>
         </form>
     </div>
 

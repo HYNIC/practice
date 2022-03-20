@@ -110,12 +110,12 @@ input, select {
     font-size: 21px;
 }
 
-#phone1 {
+.phone:first-child {
     width: 55px;
     font-size: 15px;;
 }
 
-#phone2, #phone3 {
+.phone {
     width: 75px;
 }
 

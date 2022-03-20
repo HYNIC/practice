@@ -1,15 +1,12 @@
 // 변수 선언
-let joinBtn, email, username, pw, re_pw, phone1, phone2, phone3, city, gender, input_err, email_err, pw_err;
+let joinBtn, email, username, pw, re_pw, phoneArr, city, gender, checkPhone, input_err, email_err, pw_err;
 
 joinBtn = document.querySelector("#submit-btn");
 email = document.querySelector("#email");
 username = document.querySelector("#name");
 pw = document.querySelector("#pw");
 re_pw = document.querySelector("#pw2");
-phoneNum = document.querySelectorAll(".phone");
-phone1 = phoneNum[0];
-phone2 = phoneNum[1];
-phone3 = phoneNum[2];
+phoneArr = document.querySelectorAll(".phone");
 city = document.querySelector(".join-form-city"); 
 
 // 이벤트리스너 
@@ -18,16 +15,16 @@ joinBtn.addEventListener("click", confirmInput); // 버튼클릭시 가입정보
 email.addEventListener("input", checkEmail); // 이메일 형식 체크
 
 // 숫자입력체크
-phoneNum.forEach( (phone) => {
+phoneArr.forEach( (phone) => {
     phone.addEventListener("input", (e) => checkNum(e.currentTarget));
 });
 
 // 연락처 포커스이동
-for (let i = 0; i < phoneNum.length; i++) {
-    if (i < phoneNum.length -1) {
-        phoneNum[i].addEventListener("keyup", (e) => moveFocus(e.currentTarget, phoneNum[i + 1]));
+for (let i = 0; i < phoneArr.length; i++) {
+    if (i < phoneArr.length -1) {
+        phoneArr[i].addEventListener("keyup", (e) => moveFocus(e.currentTarget, phoneArr[i + 1]));
     } else {
-        phoneNum[i].addEventListener("keyup", (e) => moveFocus(e.currentTarget, city));
+        phoneArr[i].addEventListener("keyup", (e) => moveFocus(e.currentTarget, city));
     }
 }
 
@@ -35,15 +32,25 @@ for (let i = 0; i < phoneNum.length; i++) {
 // 버튼 활성화
 function activateBtn() {
     checkPw();
+
     // input마다 gender checked된 값 확인
     gender = document.querySelector("input[name='gender']:checked");
 
+    // 연락처 값이 완전히 입력되었는지 확인
+    for (i = 0; i < phoneArr.length; i++) {
+        checkPhone = phoneArr[i].value.length == phoneArr[i].getAttribute('maxlength');
+        if (!checkPhone) {
+            break;
+        }
+    }
+
     // 모든 값이 작성되었는지 확인
-    let input_check = email.value && username.value && pw.value && re_pw.value && (phone1.value.length == 3) && (phone2.value.length == 4) && (phone3.value.length == 4) && (city.value.length != 0) && gender.value;
+    let input_check = email.value && username.value && pw.value && re_pw.value && checkPhone && (city.value.length != 0) && gender.value;
 
     // 에러메시지 떠있는지 확인
     let isErr = (email_err.style.display == "block") || (pw_err.style.display == "block");
 
+    // 조건에 따라 버튼 활성화
     if (!input_check) {
         joinBtn.disabled = true;
     } else if (isErr) {
